@@ -198,7 +198,7 @@ export default function Home() {
 
         <div
           style={{ display: "grid", gridTemplateColumns: "1fr", flex: 1 }}
-          className="lg:grid-cols-[1fr_1fr]"
+          className="lg:grid-cols-[48%_52%]"
         >
           {/* Left: Text column */}
           <div
@@ -231,7 +231,7 @@ export default function Home() {
                 style={{
                   fontSize: "clamp(2.4rem, 5.5vw, 5rem)",
                   color: "#000",
-                  maxWidth: "520px",
+                  maxWidth: "640px",
                   transitionDelay: "80ms",
                   lineHeight: 1.08,
                 }}
@@ -241,7 +241,7 @@ export default function Home() {
 
               <div
                 className="reveal"
-                style={{ marginTop: "2.5rem", maxWidth: "400px", transitionDelay: "160ms" }}
+                style={{ marginTop: "2.5rem", maxWidth: "520px", transitionDelay: "160ms" }}
               >
                 <p
                   style={{
@@ -724,7 +724,7 @@ export default function Home() {
                   fontSize: "clamp(2rem, 4vw, 3.2rem)",
                   color: "#000",
                   marginTop: "0.75rem",
-                  maxWidth: "420px",
+                  maxWidth: "540px",
                   lineHeight: 1.2,
                 }}
               >
@@ -738,7 +738,7 @@ export default function Home() {
                   lineHeight: 1.8,
                   color: "rgba(0,0,0,0.75)",
                   marginTop: "1.5rem",
-                  maxWidth: "380px",
+                  maxWidth: "500px",
                 }}
               >
                 {t.accessBodyIntro}
@@ -751,7 +751,7 @@ export default function Home() {
                   lineHeight: 1.8,
                   color: "rgba(0,0,0,0.58)",
                   marginTop: "0.75rem",
-                  maxWidth: "380px",
+                  maxWidth: "500px",
                 }}
               >
                 {t.accessBody}
