@@ -16,7 +16,7 @@ export const translations = {
     // Nav
     navCapabilities: "Capabilities",
     navAccess: "Access",
-    navLogin: "Agent Login",
+    navLogin: "Agent Access",
     navRequestAccess: "Inquire",
     navBrand: "The Agency Costa Rica",
 
