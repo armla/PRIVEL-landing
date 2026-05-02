@@ -1,0 +1,226 @@
+/*
+ * PRIVEL — Design System
+ * Philosophy: "Private Residence" — warm editorial luxury
+ * Brand: PRIVEL / The Agency Costa Rica
+ * Colors: Ecru #F5F1E9 background, Iron #000 text, Agency Red #ED2127 accent
+ * Typography: Playfair Display (headlines) + Inter (UI/labels/body) per PRIVEL Brand Guidelines
+ * Layout: Asymmetric offset grid, editorial rhythm, restrained use of red
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-agency-red: #ED2127;
+  --color-ecru: #F5F1E9;
+  --color-ecru-shade: #EBE3D6;
+  --color-iron: #000000;
+}
+
+:root {
+  --radius: 0rem;
+  --background: oklch(0.966 0.008 85);       /* Ecru #F5F1E9 */
+  --foreground: oklch(0.1 0 0);              /* Iron #000000 */
+  --card: oklch(0.94 0.01 85);
+  --card-foreground: oklch(0.1 0 0);
+  --popover: oklch(0.966 0.008 85);
+  --popover-foreground: oklch(0.1 0 0);
+  --primary: oklch(0.45 0.22 26);            /* Agency Red #ED2127 */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.94 0.01 85);
+  --secondary-foreground: oklch(0.1 0 0);
+  --muted: oklch(0.94 0.01 85);
+  --muted-foreground: oklch(0.45 0.01 85);
+  --accent: oklch(0.94 0.01 85);
+  --accent-foreground: oklch(0.1 0 0);
+  --destructive: oklch(0.45 0.22 26);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.88 0.015 85);
+  --input: oklch(0.88 0.015 85);
+  --ring: oklch(0.45 0.22 26);
+  --sidebar: oklch(0.94 0.01 85);
+  --sidebar-foreground: oklch(0.1 0 0);
+  --sidebar-primary: oklch(0.45 0.22 26);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.88 0.015 85);
+  --sidebar-accent-foreground: oklch(0.1 0 0);
+  --sidebar-border: oklch(0.88 0.015 85);
+  --sidebar-ring: oklch(0.45 0.22 26);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+      max-width: 1400px;
+    }
+  }
+
+  /* Playfair display headline */
+  .headline-display {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  /* Inter label — uppercase tracking per brand guidelines */
+  .label-inter {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.65rem;
+  }
+
+  /* Thin horizontal rule */
+  .rule-thin {
+    border: none;
+    border-top: 1px solid oklch(0.88 0.015 85);
+    width: 100%;
+  }
+
+  /* Red underline hover effect */
+  .hover-red-underline {
+    position: relative;
+    text-decoration: none;
+  }
+  .hover-red-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #ED2127;
+    transition: width 0.3s ease;
+  }
+  .hover-red-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Scroll reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Language toggle pill */
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1px solid rgba(0,0,0,0.15);
+    overflow: hidden;
+  }
+  .lang-toggle button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border: none;
+    background: transparent;
+    color: rgba(0,0,0,0.4);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    line-height: 1;
+  }
+  .lang-toggle button.active {
+    background-color: #000;
+    color: #fff;
+  }
+  .lang-toggle button:not(.active):hover {
+    background-color: rgba(0,0,0,0.06);
+    color: rgba(0,0,0,0.7);
+  }
+
+  /* Dark section lang toggle variant */
+  .lang-toggle-dark {
+    border-color: rgba(255,255,255,0.2);
+  }
+  .lang-toggle-dark button {
+    color: rgba(255,255,255,0.4);
+  }
+  .lang-toggle-dark button.active {
+    background-color: #fff;
+    color: #000;
+  }
+  .lang-toggle-dark button:not(.active):hover {
+    background-color: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+  }
+}
