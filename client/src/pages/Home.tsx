@@ -201,10 +201,10 @@ export default function Home() {
           {/* Left: Text column */}
           <div
             className="flex flex-col justify-between"
-            style={{
-              padding: "4.5rem 3rem 4.5rem 4rem",
-              borderRight: "1px solid rgba(0,0,0,0.08)",
-            }}
+          style={{
+            padding: "clamp(2.5rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 3rem) clamp(2.5rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 4rem)",
+            borderRight: "1px solid rgba(0,0,0,0.08)",
+          }}
           >
             {/* Top: badge */}
             <div className="reveal" style={{ transitionDelay: "0ms" }}>
@@ -227,10 +227,11 @@ export default function Home() {
               <h1
                 className="headline-display reveal"
                 style={{
-                  fontSize: "clamp(2.8rem, 5.5vw, 5rem)",
+                  fontSize: "clamp(2.4rem, 5.5vw, 5rem)",
                   color: "#000",
                   maxWidth: "520px",
                   transitionDelay: "80ms",
+                  lineHeight: 1.08,
                 }}
               >
                 {t.heroHeadline}
@@ -244,8 +245,8 @@ export default function Home() {
                   style={{
                     fontFamily: "'Inter', sans-serif",
                     fontWeight: 300,
-                    fontSize: "0.975rem",
-                    lineHeight: "1.85",
+                    fontSize: "clamp(0.875rem, 2vw, 0.975rem)",
+                    lineHeight: "1.8",
                     color: "rgba(0,0,0,0.62)",
                   }}
                 >
@@ -438,7 +439,7 @@ export default function Home() {
       </div>
 
       {/* ─── CAPABILITIES ────────────────────────────────────────────── */}
-      <section id="capabilities" style={{ padding: "8rem 0", backgroundColor: "#F5F1E9" }}>
+      <section id="capabilities" className="section-pad" style={{ backgroundColor: "#F5F1E9" }}>
         <div className="container">
           {/* Section header */}
           <div
@@ -486,13 +487,10 @@ export default function Home() {
             {(t.capabilities as Array<{index: string; title: string; body: string}>).map((cap, i) => (
               <div
                 key={cap.index}
-                className="reveal"
+                className="reveal cap-card"
                 style={{
                   transitionDelay: `${i * 60}ms`,
-                  padding: "3rem 2.5rem 3rem 0",
                   borderRight: i < t.capabilities.length - 1 ? "1px solid rgba(0,0,0,0.06)" : "none",
-                  paddingRight: i < t.capabilities.length - 1 ? "2.5rem" : "0",
-                  paddingLeft: i > 0 ? "2.5rem" : "0",
                 }}
               >
                 <span
@@ -505,23 +503,15 @@ export default function Home() {
                   style={{
                     fontFamily: "'Playfair Display', serif",
                     fontWeight: 400,
-                    fontSize: "1.05rem",
+                    fontSize: "clamp(1rem, 2vw, 1.1rem)",
                     color: "#000",
-                    marginBottom: "1rem",
+                    marginBottom: "0.85rem",
                     lineHeight: 1.35,
                   }}
                 >
                   {cap.title}
                 </h3>
-                <p
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 300,
-                    fontSize: "0.85rem",
-                    lineHeight: 1.85,
-                    color: "rgba(0,0,0,0.52)",
-                  }}
-                >
+                <p className="body-refined">
                   {cap.body}
                 </p>
               </div>
@@ -626,7 +616,7 @@ export default function Home() {
       </section>
 
       {/* ─── HOW IT WORKS ────────────────────────────────────────────── */}
-      <section style={{ padding: "8rem 0", backgroundColor: "#F5F1E9" }}>
+      <section className="section-pad" style={{ backgroundColor: "#F5F1E9" }}>
         <div className="container">
           <div
             className="reveal"
@@ -671,12 +661,10 @@ export default function Home() {
             {(t.steps as Array<{step: string; title: string; body: string}>).map((item, i) => (
               <div
                 key={item.step}
-                className="reveal"
+                className="reveal cap-card"
                 style={{
                   transitionDelay: `${i * 80}ms`,
-                  padding: "3rem 2.5rem",
                   borderRight: i < t.steps.length - 1 ? "1px solid rgba(0,0,0,0.08)" : "none",
-                  borderBottom: "1px solid rgba(0,0,0,0.08)",
                 }}
               >
                 <span
@@ -694,23 +682,15 @@ export default function Home() {
                   style={{
                     fontFamily: "'Playfair Display', serif",
                     fontWeight: 400,
-                    fontSize: "1.05rem",
+                    fontSize: "clamp(1rem, 2vw, 1.1rem)",
                     color: "#000",
-                    marginBottom: "1rem",
+                    marginBottom: "0.85rem",
                     lineHeight: 1.4,
                   }}
                 >
                   {item.title}
                 </h3>
-                <p
-                  style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontWeight: 300,
-                    fontSize: "0.85rem",
-                    lineHeight: 1.85,
-                    color: "rgba(0,0,0,0.52)",
-                  }}
-                >
+                <p className="body-refined">
                   {item.body}
                 </p>
               </div>
@@ -720,7 +700,7 @@ export default function Home() {
       </section>
 
       {/* ─── ACCESS / CTA ────────────────────────────────────────────── */}
-      <section id="access" style={{ padding: "8rem 0", backgroundColor: "#EBE3D6" }}>
+      <section id="access" className="section-pad" style={{ backgroundColor: "#EBE3D6" }}>
         <div className="container">
           <div
             style={{
@@ -752,8 +732,8 @@ export default function Home() {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 400,
-                  fontSize: "0.9rem",
-                  lineHeight: 1.9,
+                  fontSize: "clamp(0.875rem, 2vw, 0.9rem)",
+                  lineHeight: 1.8,
                   color: "rgba(0,0,0,0.75)",
                   marginTop: "1.5rem",
                   maxWidth: "380px",
@@ -765,8 +745,8 @@ export default function Home() {
                 style={{
                   fontFamily: "'Inter', sans-serif",
                   fontWeight: 300,
-                  fontSize: "0.9rem",
-                  lineHeight: 1.9,
+                  fontSize: "clamp(0.875rem, 2vw, 0.9rem)",
+                  lineHeight: 1.8,
                   color: "rgba(0,0,0,0.58)",
                   marginTop: "0.75rem",
                   maxWidth: "380px",

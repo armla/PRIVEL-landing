@@ -100,8 +100,8 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .flex {
@@ -109,10 +109,17 @@
     min-width: 0;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 480px) {
     .container {
       padding-left: 2rem;
       padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
     }
   }
 
@@ -128,8 +135,52 @@
   .headline-display {
     font-family: 'Playfair Display', serif;
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.12;
     letter-spacing: -0.02em;
+  }
+
+  /* Mobile-first section rhythm */
+  .section-pad {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  @media (min-width: 768px) {
+    .section-pad {
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .section-pad {
+      padding-top: 9rem;
+      padding-bottom: 9rem;
+    }
+  }
+
+  /* Capability / process card — uniform padding, border handled via wrapper */
+  .cap-card {
+    padding: 2.5rem 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  @media (min-width: 768px) {
+    .cap-card {
+      padding: 3rem 2.5rem;
+    }
+  }
+
+  /* Body text — readable luxury */
+  .body-refined {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.8;
+    color: rgba(0,0,0,0.55);
+  }
+  @media (min-width: 768px) {
+    .body-refined {
+      font-size: 0.9rem;
+      line-height: 1.9;
+    }
   }
 
   /* Inter label — uppercase tracking per brand guidelines */
