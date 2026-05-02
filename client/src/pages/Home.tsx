@@ -371,13 +371,14 @@ export default function Home() {
                 position: "absolute",
                 bottom: "2rem",
                 right: "2rem",
-                backgroundColor: "rgba(245,241,233,0.92)",
+                backgroundColor: "rgba(245,241,233,0.97)",
                 backdropFilter: "blur(10px)",
-                padding: "0.85rem 1.25rem",
-                borderLeft: "2px solid #ED2127",
+                padding: "1rem 1.5rem",
+                borderLeft: "3px solid #ED2127",
+                boxShadow: "0 2px 16px rgba(0,0,0,0.18)",
               }}
             >
-              <span className="label-inter" style={{ color: "rgba(0,0,0,0.5)", fontSize: "0.55rem" }}>
+              <span className="label-inter" style={{ color: "rgba(0,0,0,0.72)", fontSize: "0.6rem", fontWeight: 600, letterSpacing: "0.18em" }}>
                 {t.heroInvitation}
               </span>
             </div>
@@ -470,7 +471,8 @@ export default function Home() {
               transitionDelay: "80ms",
             }}
           >
-            {t.capHeadline}
+            <span style={{ display: "block" }}>{t.capHeadlineMain}</span>
+            <span style={{ display: "block", fontStyle: "italic", fontWeight: 300, fontSize: "clamp(1.4rem, 2.5vw, 2.2rem)", color: "rgba(0,0,0,0.45)", marginTop: "0.4rem" }}>{t.capHeadlineSub}</span>
           </h2>
 
           {/* Capabilities grid */}
@@ -612,7 +614,7 @@ export default function Home() {
                   onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#CC0000")}
                   onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#ED2127")}
                 >
-                  {t.navLogin}
+                  {t.processLoginLabel}
                   <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
                     <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -749,11 +751,24 @@ export default function Home() {
               <p
                 style={{
                   fontFamily: "'Inter', sans-serif",
+                  fontWeight: 400,
+                  fontSize: "0.9rem",
+                  lineHeight: 1.9,
+                  color: "rgba(0,0,0,0.75)",
+                  marginTop: "1.5rem",
+                  maxWidth: "380px",
+                }}
+              >
+                {t.accessBodyIntro}
+              </p>
+              <p
+                style={{
+                  fontFamily: "'Inter', sans-serif",
                   fontWeight: 300,
                   fontSize: "0.9rem",
                   lineHeight: 1.9,
                   color: "rgba(0,0,0,0.58)",
-                  marginTop: "1.5rem",
+                  marginTop: "0.75rem",
                   maxWidth: "380px",
                 }}
               >
@@ -923,32 +938,42 @@ export default function Home() {
                       }
                     />
                   </div>
-                  <button
-                    type="submit"
-                    className="label-inter"
-                    style={{
-                      backgroundColor: "#ED2127",
-                      color: "#fff",
-                      border: "none",
-                      padding: "1rem 2rem",
-                      fontSize: "0.6rem",
-                      letterSpacing: "0.2em",
-                      textTransform: "uppercase",
-                      fontFamily: "'Inter', sans-serif",
-                      cursor: "pointer",
-                      transition: "background-color 0.2s ease",
-                      marginTop: "0.5rem",
-                      textAlign: "center",
-                    }}
-                    onMouseEnter={(e) =>
-                      ((e.target as HTMLElement).style.backgroundColor = "#CC0000")
-                    }
-                    onMouseLeave={(e) =>
-                      ((e.target as HTMLElement).style.backgroundColor = "#ED2127")
-                    }
-                  >
-                    {t.formSubmit}
-                  </button>
+                  <div>
+                    <button
+                      type="submit"
+                      className="label-inter"
+                      style={{
+                        backgroundColor: "#ED2127",
+                        color: "#fff",
+                        border: "none",
+                        padding: "1rem 2rem",
+                        fontSize: "0.6rem",
+                        letterSpacing: "0.2em",
+                        textTransform: "uppercase",
+                        fontFamily: "'Inter', sans-serif",
+                        cursor: "pointer",
+                        transition: "background-color 0.2s ease",
+                        marginTop: "0.5rem",
+                        textAlign: "center",
+                        display: "block",
+                        width: "100%",
+                      }}
+                      onMouseEnter={(e) =>
+                        ((e.target as HTMLElement).style.backgroundColor = "#CC0000")
+                      }
+                      onMouseLeave={(e) =>
+                        ((e.target as HTMLElement).style.backgroundColor = "#ED2127")
+                      }
+                    >
+                      {t.formSubmit}
+                    </button>
+                    <p
+                      className="label-inter"
+                      style={{ color: "rgba(0,0,0,0.3)", fontSize: "0.52rem", marginTop: "0.85rem", textAlign: "center", letterSpacing: "0.08em" }}
+                    >
+                      {t.formMicroCopy}
+                    </p>
+                  </div>
                 </form>
               )}
             </div>
