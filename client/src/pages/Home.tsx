@@ -84,6 +84,8 @@ export default function Home() {
   const pageRef = useRevealOnScroll();
   const { t, lang } = useLang();
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formError, setFormError] = useState(false);
+  const [formLoading, setFormLoading] = useState(false);
 
   return (
     <div ref={pageRef} className="min-h-screen" style={{ backgroundColor: "#F5F1E9" }}>
@@ -829,9 +831,28 @@ export default function Home() {
                 </div>
               ) : (
                 <form
-                  onSubmit={(e) => {
+                  onSubmit={async (e) => {
                     e.preventDefault();
-                    setFormSubmitted(true);
+                    setFormLoading(true);
+                    setFormError(false);
+                    const form = e.currentTarget;
+                    const data = new FormData(form);
+                    try {
+                      const res = await fetch("https://formspree.io/f/xzdodpny", {
+                        method: "POST",
+                        body: data,
+                        headers: { Accept: "application/json" },
+                      });
+                      if (res.ok) {
+                        setFormSubmitted(true);
+                      } else {
+                        setFormError(true);
+                      }
+                    } catch {
+                      setFormError(true);
+                    } finally {
+                      setFormLoading(false);
+                    }
                   }}
                   style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }}
                 >
@@ -854,6 +875,7 @@ export default function Home() {
                       </label>
                       <input
                         id={field.id}
+                        name={field.id}
                         type={field.type}
                         placeholder={field.placeholder}
                         required={field.required}
@@ -894,6 +916,7 @@ export default function Home() {
                     </label>
                     <textarea
                       id="message"
+                      name="message"
                       rows={3}
                       placeholder={t.formNotePlaceholder}
                       style={{
@@ -945,8 +968,16 @@ export default function Home() {
                         ((e.target as HTMLElement).style.backgroundColor = "#ED2127")
                       }
                     >
-                      {t.formSubmit}
+                      {formLoading ? "..." : t.formSubmit}
                     </button>
+                    {formError && (
+                      <p
+                        className="label-inter"
+                        style={{ color: "#ED2127", fontSize: "0.55rem", marginTop: "0.75rem", textAlign: "center", letterSpacing: "0.08em" }}
+                      >
+                        {lang === "en" ? "Something went wrong. Please try again." : "Algo salió mal. Por favor intente de nuevo."}
+                      </p>
+                    )}
                     <p
                       className="label-inter"
                       style={{ color: "rgba(0,0,0,0.3)", fontSize: "0.52rem", marginTop: "0.85rem", textAlign: "center", letterSpacing: "0.08em" }}
