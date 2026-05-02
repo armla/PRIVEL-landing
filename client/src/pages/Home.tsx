@@ -11,9 +11,9 @@
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "@/contexts/LanguageContext";
 
-// Real brand assets from PRIVEL Brand Assets / TACR Manus knowledgebase
-const PRIVEL_ICON = "/manus-storage/privel-icon-192_412aa1ba.png";
-const TA_LOGO_RED = "/manus-storage/TA_Logo_Red_feac9e46.png";
+// Brand assets stored in /public/brand — no external CDN dependency
+const PRIVEL_ICON = "/brand/privel-icon-192.png";
+const TA_LOGO_RED = "/brand/TA_Logo_Red.png";
 const HERO_IMAGE =
   "https://d2xsxph8kpxj0f.cloudfront.net/310419663026827199/Sw9Tv42f7umDRcPxfZkUCx/privel-hero-KNLBdx7oiyVtx4VXtDC9K3.webp";
 
@@ -41,32 +41,48 @@ function useRevealOnScroll() {
   return ref;
 }
 
-// Language toggle pill component
+// Language toggle: Globe icon + current language code, click to switch
 function LangToggle({ dark = false }: { dark?: boolean }) {
   const { lang, toggleLang } = useLang();
+  const textColor = dark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.5)";
+  const hoverColor = dark ? "#fff" : "#000";
   return (
-    <div className={`lang-toggle ${dark ? "lang-toggle-dark" : ""}`}>
-      <button
-        onClick={() => lang !== "en" && toggleLang()}
-        className={lang === "en" ? "active" : ""}
-        aria-label="Switch to English"
-      >
-        EN
-      </button>
-      <button
-        onClick={() => lang !== "es" && toggleLang()}
-        className={lang === "es" ? "active" : ""}
-        aria-label="Cambiar a Español"
-      >
-        ES
-      </button>
-    </div>
+    <button
+      onClick={toggleLang}
+      aria-label={lang === "en" ? "Cambiar a Español" : "Switch to English"}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "5px",
+        background: "none",
+        border: "none",
+        cursor: "pointer",
+        color: textColor,
+        fontFamily: "'Inter', sans-serif",
+        fontWeight: 500,
+        fontSize: "0.6rem",
+        letterSpacing: "0.12em",
+        textTransform: "uppercase",
+        padding: "2px 0",
+        transition: "color 0.2s ease",
+      }}
+      onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = hoverColor)}
+      onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = textColor)}
+    >
+      {/* Globe icon */}
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+      <span>{lang === "en" ? "ES" : "EN"}</span>
+    </button>
   );
 }
 
 export default function Home() {
   const pageRef = useRevealOnScroll();
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   return (
@@ -110,21 +126,7 @@ export default function Home() {
               {t.heroTagline}
             </span>
           </div>
-          <div
-            style={{
-              width: "1px",
-              height: "16px",
-              backgroundColor: "rgba(0,0,0,0.15)",
-              marginLeft: "4px",
-            }}
-            className="hidden sm:block"
-          />
-          <span
-            className="label-inter hidden sm:block"
-            style={{ color: "rgba(0,0,0,0.3)", fontSize: "0.5rem" }}
-          >
-            {t.navBrand}
-          </span>
+
         </div>
 
         {/* Right: nav links + lang toggle + login + CTA */}
@@ -247,7 +249,33 @@ export default function Home() {
                     color: "rgba(0,0,0,0.62)",
                   }}
                 >
-                  {t.heroBody}
+                  {lang === "en" ? (
+                    <>
+                      Privel is a private advisory tool built exclusively for{" "}
+                      <a
+                        href="https://lxcostarica.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "#ED2127", textDecoration: "underline", textDecorationColor: "#ED2127" }}
+                      >
+                        The Agency Costa Rica
+                      </a>
+                      . It consolidates market knowledge, client strategy, and operational support into a single, discreet platform.
+                    </>
+                  ) : (
+                    <>
+                      Privel es una herramienta de asesoría privada creada exclusivamente para{" "}
+                      <a
+                        href="https://lxcostarica.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "#ED2127", textDecoration: "underline", textDecorationColor: "#ED2127" }}
+                      >
+                        The Agency Costa Rica
+                      </a>
+                      . Consolida el conocimiento del mercado, la estrategia de clientes y el soporte operativo en una sola plataforma discreta.
+                    </>
+                  )}
                 </p>
               </div>
 
@@ -266,7 +294,7 @@ export default function Home() {
                   }}
                 />
                 <p className="label-inter" style={{ color: "rgba(0,0,0,0.38)" }}>
-                  {t.heroExclusive}
+                  {lang === "en" ? "Exclusive to The Agency Costa Rica team" : "Exclusivo para el equipo de The Agency Costa Rica"}
                 </p>
               </div>
 
@@ -742,7 +770,7 @@ export default function Home() {
                   }}
                 />
                 <p className="label-inter" style={{ color: "rgba(0,0,0,0.35)", fontSize: "0.6rem" }}>
-                  {t.accessTagline}
+                  theagency.cr
                 </p>
               </div>
 
@@ -815,7 +843,6 @@ export default function Home() {
                   {[
                     { id: "name", label: t.formName, type: "text", placeholder: t.formNamePlaceholder, required: true },
                     { id: "email", label: t.formEmail, type: "email", placeholder: t.formEmailPlaceholder, required: true },
-                    { id: "license", label: t.formLicense, type: "text", placeholder: t.formLicensePlaceholder, required: false },
                   ].map((field) => (
                     <div key={field.id}>
                       <label
@@ -1012,7 +1039,9 @@ export default function Home() {
               className="label-inter"
               style={{ color: "rgba(245,241,233,0.18)", fontSize: "0.52rem" }}
             >
-              © {new Date().getFullYear()} {t.footerCopyright}
+              © {new Date().getFullYear()} Grupo LX Inmobiliaria CR SA. All rights reserved.
+              <br />
+              THE AGENCY COSTA RICA IS AN INDEPENDENTLY OWNED AND OPERATED FRANCHISEE OF THE AGENCY REAL ESTATE FRANCHISING, LLC.
             </p>
           </div>
         </div>

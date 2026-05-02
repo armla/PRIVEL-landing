@@ -100,8 +100,8 @@ export const translations = {
     accessSub: "Access",
     accessHeadline: "Interested in joining The Agency Costa Rica?",
     accessBody:
-      "If you are a licensed real estate professional in Costa Rica and want to learn more about joining The Agency Costa Rica and gaining access to Privel, submit your information below. A member of our team will be in touch.",
-    accessTagline: "theagencycostarica.com",
+      "If you are a real estate professional in Costa Rica and want to learn more about joining The Agency Costa Rica and gaining access to PRIVEL, submit your information below. A member of our team will be in touch.",
+    accessTagline: "theagency.cr",
     formTitle: "Inquiry Form",
     formName: "Full Name",
     formNamePlaceholder: "Your full name",
@@ -109,7 +109,7 @@ export const translations = {
     formEmailPlaceholder: "your@email.com",
     formLicense: "License Number (optional)",
     formLicensePlaceholder: "SUGEF / CCCBR license",
-    formNote: "Brief Note (optional)",
+    formNote: "Brief Note",
     formNotePlaceholder: "Tell us briefly about your experience",
     formSubmit: "Submit Inquiry",
     formConfirm: "Inquiry Received",
@@ -119,7 +119,7 @@ export const translations = {
     footerCap: "Capabilities",
     footerAccess: "Access",
     footerAgency: "The Agency Costa Rica",
-    footerCopyright: "The Agency Costa Rica. All rights reserved.",
+    footerCopyright: "Grupo LX Inmobiliaria CR SA. All rights reserved.",
   },
 
   es: {
@@ -215,8 +215,8 @@ export const translations = {
     accessSub: "Acceso",
     accessHeadline: "¿Le interesa unirse a The Agency Costa Rica?",
     accessBody:
-      "Si usted es un profesional inmobiliario con licencia en Costa Rica y desea obtener más información sobre cómo unirse a The Agency Costa Rica y acceder a Privel, envíe su información a continuación. Un miembro de nuestro equipo se pondrá en contacto con usted.",
-    accessTagline: "theagencycostarica.com",
+      "Si usted es un profesional inmobiliario en Costa Rica y desea obtener más información sobre cómo unirse a The Agency Costa Rica y acceder a PRIVEL, envíe su información a continuación. Un miembro de nuestro equipo se pondrá en contacto con usted.",
+    accessTagline: "theagency.cr",
     formTitle: "Formulario de Consulta",
     formName: "Nombre Completo",
     formNamePlaceholder: "Su nombre completo",
@@ -224,7 +224,7 @@ export const translations = {
     formEmailPlaceholder: "su@correo.com",
     formLicense: "Número de Licencia (opcional)",
     formLicensePlaceholder: "Licencia SUGEF / CCCBR",
-    formNote: "Nota Breve (opcional)",
+    formNote: "Nota Breve",
     formNotePlaceholder: "Cuéntenos brevemente sobre su experiencia",
     formSubmit: "Enviar Consulta",
     formConfirm: "Consulta Recibida",
@@ -234,7 +234,7 @@ export const translations = {
     footerCap: "Capacidades",
     footerAccess: "Acceso",
     footerAgency: "The Agency Costa Rica",
-    footerCopyright: "The Agency Costa Rica. Todos los derechos reservados.",
+    footerCopyright: "Grupo LX Inmobiliaria CR SA. Todos los derechos reservados.",
   },
 } as const;
 
