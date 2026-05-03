@@ -14,8 +14,8 @@ import { useLang } from "@/contexts/LanguageContext";
 // Brand assets stored in /public/brand — no external CDN dependency
 const PRIVEL_ICON = "/brand/privel-icon-192.png";
 const TA_LOGO_RED = "/brand/TA_Logo_Red.png";
-const HERO_IMAGE =
-  "https://d2xsxph8kpxj0f.cloudfront.net/310419663026827199/Sw9Tv42f7umDRcPxfZkUCx/privel-hero-KNLBdx7oiyVtx4VXtDC9K3.webp";
+const HERO_IMAGE = "/brand/privel-hero.webp";
+const TA_LOGO_WHITE = "/brand/TA_Logo_White.png";
 
 const LOGIN_URL = "https://privel.app";
 
@@ -86,6 +86,7 @@ export default function Home() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formError, setFormError] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div ref={pageRef} className="min-h-screen" style={{ backgroundColor: "#F5F1E9" }}>
@@ -131,8 +132,19 @@ export default function Home() {
 
         </div>
 
-        {/* Right: nav links + lang toggle + login + CTA */}
+          {/* Right: nav links + lang toggle + login + CTA */}
         <div className="flex items-center gap-4 md:gap-5">
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden flex flex-col justify-center items-center gap-[5px] p-1"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+            style={{ background: "none", border: "none", cursor: "pointer" }}
+          >
+            <span style={{ display: "block", width: "20px", height: "1.5px", backgroundColor: mobileMenuOpen ? "#ED2127" : "#000", transition: "all 0.2s", transform: mobileMenuOpen ? "translateY(6.5px) rotate(45deg)" : "none" }} />
+            <span style={{ display: "block", width: "20px", height: "1.5px", backgroundColor: mobileMenuOpen ? "#ED2127" : "#000", transition: "all 0.2s", opacity: mobileMenuOpen ? 0 : 1 }} />
+            <span style={{ display: "block", width: "20px", height: "1.5px", backgroundColor: mobileMenuOpen ? "#ED2127" : "#000", transition: "all 0.2s", transform: mobileMenuOpen ? "translateY(-6.5px) rotate(-45deg)" : "none" }} />
+          </button>
           <a
             href="#capabilities"
             className="label-inter hover-red-underline hidden md:inline"
@@ -148,8 +160,8 @@ export default function Home() {
             {t.navAccess}
           </a>
 
-          {/* Language toggle */}
-          <LangToggle />
+          {/* Language toggle — desktop only; also shown in mobile menu */}
+          <span className="hidden md:inline"><LangToggle /></span>
 
           {/* Agent Login */}
           <a
@@ -188,6 +200,70 @@ export default function Home() {
             {t.navRequestAccess}
           </a>
         </div>
+      {/* ─── MOBILE MENU DRAWER ─────────────────────────────────── */}
+      {mobileMenuOpen && (
+        <div
+          className="md:hidden fixed top-[60px] left-0 right-0 z-40"
+          style={{
+            backgroundColor: "rgba(245,241,233,0.98)",
+            backdropFilter: "blur(14px)",
+            WebkitBackdropFilter: "blur(14px)",
+            borderBottom: "1px solid rgba(0,0,0,0.1)",
+            padding: "1.5rem 1.5rem 2rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0",
+          }}
+        >
+          {[{ label: t.navCapabilities, href: "#capabilities" }, { label: t.navAccess, href: "#access" }, { label: t.navLogin, href: LOGIN_URL, external: true }].map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
+              onClick={() => setMobileMenuOpen(false)}
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 500,
+                fontSize: "0.7rem",
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "rgba(0,0,0,0.65)",
+                textDecoration: "none",
+                padding: "1rem 0",
+                borderBottom: "1px solid rgba(0,0,0,0.07)",
+                display: "block",
+                transition: "color 0.15s ease",
+              }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#ED2127")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "rgba(0,0,0,0.65)")}
+            >
+              {item.label}
+            </a>
+          ))}
+          <div style={{ marginTop: "1.25rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <LangToggle />
+            <a
+              href="#access"
+              onClick={() => setMobileMenuOpen(false)}
+              className="label-inter"
+              style={{
+                color: "#fff",
+                backgroundColor: "#ED2127",
+                padding: "8px 18px",
+                fontSize: "0.58rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                fontFamily: "'Inter', sans-serif",
+                textDecoration: "none",
+              }}
+            >
+              {t.navRequestAccess}
+            </a>
+          </div>
+        </div>
+      )}
+
       </nav>
 
       {/* ─── HERO ────────────────────────────────────────────────────── */}
