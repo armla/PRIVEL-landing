@@ -492,23 +492,6 @@ export default function Home() {
           alt="Private advisory workspace"
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 60%, rgba(245,241,233,0.7) 100%)" }} />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "1.25rem",
-            right: "1.25rem",
-            backgroundColor: "rgba(245,241,233,0.97)",
-            backdropFilter: "blur(10px)",
-            padding: "0.65rem 1rem",
-            borderLeft: "3px solid #ED2127",
-            boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
-          }}
-        >
-          <span className="label-inter" style={{ color: "rgba(0,0,0,0.72)", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.18em" }}>
-            {t.heroInvitation}
-          </span>
-        </div>
       </div>
 
       {/* ─── DIVIDER STATEMENT ───────────────────────────────────────── */}
@@ -517,7 +500,7 @@ export default function Home() {
           borderTop: "1px solid rgba(0,0,0,0.08)",
           borderBottom: "1px solid rgba(0,0,0,0.08)",
           padding: "2.5rem 0",
-          backgroundColor: "#F5F1E9",
+          backgroundColor: "#ebe3d6",
         }}
       >
         <div className="container">
@@ -632,7 +615,7 @@ export default function Home() {
       {/* ─── DARK STATEMENT ──────────────────────────────────────────── */}
       <section
         style={{
-          backgroundColor: "#EBE3D6",
+          backgroundColor: "#000",
           padding: "9rem 0",
         }}
       >
@@ -659,7 +642,7 @@ export default function Home() {
             <div>
               <span
                 className="label-inter reveal"
-                style={{ color: "rgba(0,0,0,0.35)", fontSize: "0.6rem", display: "block", marginBottom: "2.5rem" }}
+                style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.6rem", display: "block", marginBottom: "2.5rem" }}
               >
                 {t.darkSectionLabel}
               </span>
@@ -667,7 +650,7 @@ export default function Home() {
                 className="headline-display reveal"
                 style={{
                   fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
-                  color: "#000",
+                  color: "#F5F1E9",
                   maxWidth: "700px",
                   lineHeight: 1.1,
                   transitionDelay: "80ms",
@@ -682,7 +665,7 @@ export default function Home() {
                   fontWeight: 300,
                   fontSize: "0.95rem",
                   lineHeight: 1.9,
-                  color: "rgba(0,0,0,0.55)",
+                  color: "rgba(255,255,255,0.45)",
                   marginTop: "2rem",
                   maxWidth: "560px",
                   transitionDelay: "160ms",
