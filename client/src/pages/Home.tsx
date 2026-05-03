@@ -166,17 +166,6 @@ export default function Home() {
           {/* Language toggle — desktop only */}
           <span className="hidden md:inline"><LangToggle /></span>
 
-          {/* Agent Login */}
-          <a
-            href={LOGIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="label-inter hover-red-underline hidden md:inline"
-            style={{ color: "rgba(0,0,0,0.5)", fontSize: "0.6rem" }}
-          >
-            {t.navLogin}
-          </a>
-
           {/* Request Access CTA */}
           <a
             href="#access"
@@ -218,7 +207,7 @@ export default function Home() {
             gap: "0",
           }}
         >
-          {[{ label: t.navCapabilities, href: "#capabilities" }, { label: t.navAccess, href: "#access" }, { label: t.navLogin, href: LOGIN_URL, external: true }].map((item) => (
+          {[{ label: t.navCapabilities, href: "#capabilities" }, { label: t.navAccess, href: "#access" }].map((item) => (
             <a
               key={item.href}
               href={item.href}
