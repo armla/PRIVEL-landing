@@ -134,7 +134,10 @@ export default function Home() {
 
           {/* Right: nav links + lang toggle + login + CTA */}
         <div className="flex items-center gap-4 md:gap-5">
-          {/* Mobile hamburger */}
+          {/* Language toggle — mobile only (shown inline next to Inquire) */}
+          <span className="md:hidden"><LangToggle /></span>
+
+        {/* Mobile hamburger */}
           <button
             className="md:hidden flex flex-col justify-center items-center gap-[5px] p-1"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -160,7 +163,7 @@ export default function Home() {
             {t.navAccess}
           </a>
 
-          {/* Language toggle — desktop only; also shown in mobile menu */}
+          {/* Language toggle — desktop only */}
           <span className="hidden md:inline"><LangToggle /></span>
 
           {/* Agent Login */}
@@ -241,8 +244,7 @@ export default function Home() {
               {item.label}
             </a>
           ))}
-          <div style={{ marginTop: "1.25rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <LangToggle />
+          <div style={{ marginTop: "1.25rem", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
             <a
               href="#access"
               onClick={() => setMobileMenuOpen(false)}
@@ -480,6 +482,35 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── MOBILE HERO IMAGE ─────────────────────────────────────── */}
+      <div
+        className="lg:hidden"
+        style={{ width: "100%", height: "260px", overflow: "hidden", position: "relative" }}
+      >
+        <img
+          src={HERO_IMAGE}
+          alt="Private advisory workspace"
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 60%, rgba(245,241,233,0.7) 100%)" }} />
+        <div
+          style={{
+            position: "absolute",
+            bottom: "1.25rem",
+            right: "1.25rem",
+            backgroundColor: "rgba(245,241,233,0.97)",
+            backdropFilter: "blur(10px)",
+            padding: "0.65rem 1rem",
+            borderLeft: "3px solid #ED2127",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+          }}
+        >
+          <span className="label-inter" style={{ color: "rgba(0,0,0,0.72)", fontSize: "0.55rem", fontWeight: 600, letterSpacing: "0.18em" }}>
+            {t.heroInvitation}
+          </span>
+        </div>
+      </div>
+
       {/* ─── DIVIDER STATEMENT ───────────────────────────────────────── */}
       <div
         style={{
@@ -601,7 +632,7 @@ export default function Home() {
       {/* ─── DARK STATEMENT ──────────────────────────────────────────── */}
       <section
         style={{
-          backgroundColor: "#000",
+          backgroundColor: "#EBE3D6",
           padding: "9rem 0",
         }}
       >
@@ -628,7 +659,7 @@ export default function Home() {
             <div>
               <span
                 className="label-inter reveal"
-                style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.6rem", display: "block", marginBottom: "2.5rem" }}
+                style={{ color: "rgba(0,0,0,0.35)", fontSize: "0.6rem", display: "block", marginBottom: "2.5rem" }}
               >
                 {t.darkSectionLabel}
               </span>
@@ -636,7 +667,7 @@ export default function Home() {
                 className="headline-display reveal"
                 style={{
                   fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
-                  color: "#F5F1E9",
+                  color: "#000",
                   maxWidth: "700px",
                   lineHeight: 1.1,
                   transitionDelay: "80ms",
@@ -651,7 +682,7 @@ export default function Home() {
                   fontWeight: 300,
                   fontSize: "0.95rem",
                   lineHeight: 1.9,
-                  color: "rgba(255,255,255,0.45)",
+                  color: "rgba(0,0,0,0.55)",
                   marginTop: "2rem",
                   maxWidth: "560px",
                   transitionDelay: "160ms",

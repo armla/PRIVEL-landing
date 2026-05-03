@@ -37,7 +37,7 @@ export const translations = {
     // Divider
     dividerBuiltFor: "Built for",
     dividerStatement:
-      "Professionals who operate at the highest level of the Costa Rica luxury market.",
+      "Professionals who operate at the highest level of the luxury market.",
 
     // Capabilities
     capSectionLabel: "Capabilities",
