@@ -298,7 +298,7 @@ export default function Home() {
                 style={{
                   fontSize: "clamp(2.4rem, 5.5vw, 5rem)",
                   color: "#000",
-                  maxWidth: "640px",
+                  maxWidth: "840px",
                   transitionDelay: "80ms",
                   lineHeight: 1.08,
                 }}
@@ -308,7 +308,7 @@ export default function Home() {
 
               <div
                 className="reveal"
-                style={{ marginTop: "2.5rem", maxWidth: "520px", transitionDelay: "160ms" }}
+                style={{ marginTop: "2.5rem", maxWidth: "600px", transitionDelay: "160ms" }}
               >
                 <p
                   style={{
